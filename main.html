@@ -1,0 +1,71 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter login</title>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+</head>
+  <body bgcolor="#E6E6FA">
+  {% if user%}
+  <ul>
+    <li><a href="/profile">Profile</a></li>
+    <li><a href="/edit">EditInfo</a></li>
+    <li><a href="/search">Search</a></li>
+    <li><a href="/searchcontent">ContentSearch</a></li>
+    <li><a href="{{ url }}">Logout</a></li>
+  </ul>
+
+
+  <center><form method="post" action="/">
+  <p><input type="text" name="value"  value="" maxlength="280"><input type="submit" name="button" value="Post" /></p>
+
+  </form></center>
+  <p><font size="5">Tweets</font></p>
+  <hr>
+
+  {% for x in print_tweet|sort(attribute ='tweettime' , reverse=True) %}
+  {% if loop.index <= 50 %}
+  <font size="4" color="#1c87c9">{{ x.username }}</font>
+  <br/>
+  {{ x.tweet }}
+  <hr>
+  {% endif %}
+  {% endfor %}
+
+
+
+
+
+
+
+  {% else %}
+    <center><font size="5"><p>Hello guest welcome to the application</p></font></center>
+    <center><font size="3"> <p>you can {{ url_string }} <a href='{{ url }}'>here</a></p></font></center>
+
+  {% endif %}
+
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User information</title>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+</head>
+  <body bgcolor="#E6E6FA">
+<br/><br/>
+<center><font size="5" color="#1c87c9">{{ myuser.fullname }}</font></center><br/>
+<center><font size="3" color="#1c87c9">{{ myuser.bio }}</font></center><br/>
+<center><form method="post" action="/profile"><input type="submit" name="button" value="Back" /></form></center><br/>
+<p><font size="4">Tweets</font></p>
+<hr>
+{% for x in myuser.tweet %}
+<p>{{ x }}<form method="post" action="/profile"><input type="submit" name="button" value="Edit" /><input type="submit" name="button" value="Delete" /><input type="hidden"
+value="{{ loop.index }}" name="index"/><input type="text" name="tweet" value="{{ x }}" hidden />
+</form></br></p>
+<hr>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User information</title>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+<script>
+
+</script>
+</head>
+  <body bgcolor="#E6E6FA">
+<br/><br/>
+<center><font size="5" color="#1c87c9">{{ u_list[0].fullname }}</font></center><br/>
+<center><font size="3" color="#1c87c9">{{ u_list[0].bio }}</font></center><br/>
+<form method="post" action="/searchresult">
+
+<center>
+  <input name="value" type="text" value="{{ value }}" hidden>
+  <input  name="button" type="submit" value="{{ button }}" ><br/><br/>
+  <input  name="button" type="submit" value="Back" ></input></center><br/>
+</form>
+<font size="4">Tweets</font></p>
+<hr>
+
+{% for x in tweets  %}
+<p>{{ x }}</p>
+<hr>
+{% endfor %}
+
+
+
+
+
+</body>
+</html>
